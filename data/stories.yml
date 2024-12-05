@@ -1,0 +1,21 @@
+version: "3.1"
+stories:
+  - story: mostrar procedimentos
+    steps:
+      - intent: solicitar_procedimentos
+      - action: action_enviar_procedimentos
+
+  - story: informar precos
+    steps:
+      - intent: solicitar_precos
+      - action: action_enviar_precos
+
+  - story: processo agendamento
+    steps:
+      - intent: agendar_consulta
+      - action: action_processo_agendamento
+
+  - story: mostrar localizacao
+    steps:
+      - intent: localizacao
+      - action: action_enviar_localizacao

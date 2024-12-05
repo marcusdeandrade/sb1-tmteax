@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=postgres://bot_user:${DB_PASSWORD}@db:5432/bot_whatsapp
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - RASA_URL=http://rasa:5005
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - db
+      - rasa
+
+  db:
+    image: postgres:14-alpine
+    environment:
+      - POSTGRES_USER=bot_user
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=bot_whatsapp
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  rasa:
+    image: rasa/rasa:3.6.2
+    ports:
+      - "5005:5005"
+    volumes:
+      - ./data:/app/data
+      - ./actions:/app/actions
+    command: run --enable-api --cors "*"
+
+  rasa-actions:
+    image: rasa/rasa-sdk:3.6.2
+    volumes:
+      - ./actions:/app/actions
+    ports:
+      - "5055:5055"
+
+volumes:
+  postgres_data:

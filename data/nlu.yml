@@ -1,0 +1,46 @@
+version: "3.1"
+nlu:
+  - intent: saudacao
+    examples: |
+      - Olá
+      - Oi
+      - Bom dia
+      - Boa tarde
+      - Boa noite
+      - Hey
+
+  - intent: solicitar_procedimentos
+    examples: |
+      - Quais procedimentos vocês fazem?
+      - Que tratamentos vocês oferecem?
+      - Lista de procedimentos
+      - Quero conhecer os tratamentos
+      - Que serviços vocês têm?
+      - Mostrar procedimentos disponíveis
+
+  - intent: solicitar_precos
+    examples: |
+      - Quanto custa botox?
+      - Preço do preenchimento
+      - Valor da limpeza de pele
+      - Tabela de preços
+      - Quanto sai a harmonização facial?
+      - Valores dos procedimentos
+
+  - intent: agendar_consulta
+    examples: |
+      - Quero marcar uma consulta
+      - Como faço para agendar?
+      - Preciso marcar um horário
+      - Disponibilidade de agenda
+      - Tem horário disponível?
+      - Quero agendar uma avaliação
+
+  - intent: localizacao
+    examples: |
+      - Onde vocês ficam?
+      - Qual o endereço?
+      - Como chego aí?
+      - Localização da clínica
+      - Endereço da clínica
+      - Onde está localizada a clínica?
